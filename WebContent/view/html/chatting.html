@@ -3,13 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <title>채팅존</title>
+<link rel="stylesheet" type="text/css" href="../css/chatting.css" />
+<link rel="stylesheet" type="text/css" href="../css/css.css"  />
+<link rel="stylesheet" type="text/css" href="../css/head.css" />
+
+<script type="text/javascript" src="../../plugin/require/require.js"></script>
+<script type="text/javascript" src="../../plugin/require/requireConfig.js"></script>  
 </head>
 <body class=""> 
 	<div class="_contents_body chat_pop">
-		<div>
+		<div class="member_list" style="display:none;">	
+			<div class="header_chating">
+      			<h1 class="name_chating">대화 멤버</h1>
+    		</div>
+    		<div class="member_main">
+      			<ul class="member_list">
+      				<li>
+      					<img src="http://s.cmstatic.net/pcweb/res/153600/images/template/profile_60x60.gif?type=s75" class="profile" alt="" width="44" height="44">
+						<span class="member_name">친구1</span>
+						<a href="#" class="go_chat">1 : 1</a>
+					</li>
+					<li>
+						<img src="http://s.cmstatic.net/pcweb/res/153600/images/template/profile_60x60.gif?type=s75" class="profile" alt="" width="44" height="44">
+						<span class="member_name">친구2</span>
+						<a href="#" class="go_chat">1 : 1</a>
+					</li>
+				</ul>
+    		</div>
+    		<div class="confirm_box">
+      			<button class="btn_confirm" href="#">
+      				<span>완료</span>
+    			</button>
+    		</div>
+    		<div class="deemed"></div>
+    	</div>
+    	<div class="chat_pop member_search" style="display:none;">      
+    		<div class="header_chating">
+        		<h1 class="name_chating">대화상대 선택</h1>
+				<div class="pop_form">
+	           		<div class="band_select _custom_selector_wrap disabled">
+	            		<a href="#" class="selected_name _custom_selector_selected">Testing</a>
+	            		<ul class="band_list _custom_selector_list_wrap" style="display: none;">
+							<li class="_custom_selector_item selected" data-value="50016057" data-selected_label="Testing">
+								<label for="_selector_737840405199676_0">Testing</label>
+								<input type="radio" id="_selector_737840405199676_0" value="" name="_selector_737840405199676">
+							</li>
+						</ul>
+	         		 </div>
+	          		<div class="member_search">
+	          			<input type="text" id="search_input" name="search_input" placeholder="멤버 검색" class="search_input">
+	            		<button class="search_x" style="z-index: -1; display: none;">
+	            			<img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/input_x.gif" alt="" width="17" height="17">
+	            		</button>
+	            		<button type="submit" class="search_submit">
+	            			<img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/search_submit.png" alt="" width="18" height="18">
+	            		</button>
+	          		</div>
+	        	</div>
+	      	</div>
+      		<div class="chat_layer_main">
+        		<form method="post" action="#">
+          			<div class="member_main mCustomScrollbar _mCS_1" style="overflow: hidden;">
+          				<div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
+          					<div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
+          						<div class="_member_list_wrap">
+          							<ul class="member_list">
+          								<li>
+          									<img src="http://s.cmstatic.net/pcweb/res/153600/images/template/profile_60x60.gif?type=s75" class="profile" alt="" width="44" height="44">
+											<span class="member_name">친구1</span>
+											<span class="check_wrap">
+												<input type="checkbox" id="check_member_c55" name="check_member_c55" value="">
+												<label class="check_member" for="check_member_c55">
+													<span class="checkbox_fake"></span>1:1
+												</label>
+											</span>
+										</li>
+									</ul>
+								</div>			
+          					</div>
+          					<div class="mCSB_scrollTools" style="position: absolute; display: none;">
+          						<a class="mCSB_buttonUp" oncontextmenu="return false;"></a>
+          						<div class="mCSB_draggerContainer">
+          							<div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;">
+          								<div class="mCSB_dragger_bar" style="position:relative;"></div>
+          							</div>
+          							<div class="mCSB_draggerRail"></div>
+          						</div>
+          						<a class="mCSB_buttonDown" oncontextmenu="return false;"></a>
+          					</div>
+          				</div>
+          			</div>
+		  			<div class="_selected_member_wrap">
+		  				<div class="selected_member" style="display: none;">
+		  					<button class="btn_preview">
+								<img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/pop_member_preview.gif" width="40" height="75">
+							</button>
+							<div class="profile_list_wrap">
+								<ul style="left:0px">
+								</ul>
+							</div>
+							<button class="btn_next">
+								<img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/pop_member_next.gif" width="40" height="75">
+							</button>
+						</div>
+					</div>
+          			<div class="confirm_box">
+            			<button type="button" class="btn_cancel"><span>취소</span></button>
+            			<button type="sutmit" class="btn_confirm"><span>초대</span></button>
+          			</div>
+        		</form>
+        		<div class="dim" style="display: none;"></div>
+      		</div>
+      	</div>
+		<div class="chat_container">
 			<div class="all">
-    			<div class="status_bar">
-      				<strong class="_title">Testing (3 명)</strong>
+    			<div class="header_chating">
+      				<h1 class="name_chating">Testing (3 명)</h1>
         			<button class="pop_setting">
         				<img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/icon_setting_default.png" width="26" height="6">
         			</button>
@@ -22,7 +131,7 @@
         				</ul>
       				</div>
     			</div>
-    			<div class="chatroom chat_main">
+    			<div class="container_chating chat_main chatroom">
       				<div id="chat_list">
       					<div class="chat_list">
       						<div class="_chat_list_container eoc">
@@ -105,8 +214,8 @@
 		<div class="new_message_alert_wrap" style="display: none; opacity: 0;">
 			<p class="message_txt"></p>
 		</div>
-		<div class="_chat_input_wrap">
-			<form class="chat_input">
+		<div class="chat_input_wrap">
+			<form class="input_chat">
 				<div class="chat_btn_wrap">
 					<span class="pop_photo">
 						<input type="file" class="find_photo" id="btn_chat_pop_photo_upload">
@@ -124,16 +233,14 @@
 	</div>
 </div>
 <script type="text/javascript">
-	  require(['common_chatting'], function(){
-		  require(["js/chatting"],function(Chatting){
-			  $(document).on("contextmenu","._prevent_context",function(){
+		 require(["../js/chatting","jquery"],function(Chatting,$){
+			 $(document).on("contextmenu","._prevent_context",function(){
 					return false;
-			  });
-              Chatting.init({
+			 });
+             Chatting.init({
             	  
-              });
-		  });
-	  });
+             });
+		 });
 </script>	
 
 </body>
