@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="ko" style="overflow-y:auto;">
+<head>
+	<meta charset="euc-kr">
+	<title>싱싱톡</title>
+	<link href="../../css/css.css" rel="stylesheet" />
+	<link href="../../css/head.css" rel="stylesheet" />
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		$(function(){
+			// 댓글 수정삭제 메뉴 스크립트
+			$(".feed_more a").click(function(){
+				var display_state = $(this).parent().find(".more_layer").css("display");
+				if(display_state == "none"){
+					$(this).parent().find(".more_layer").show();
+				}else{
+					$(this).parent().find(".more_layer").hide();
+				}
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<div class="header">
+			<div class="wrap">
+				<h1 class="logo"><a href="../group/group.html" title="씽씽톡"><img src="../../images/common/h_logo.png" alt="logo" 
+				/></a></h1>
+				<div class="left">
+					<div class="grouplist">
+						<a href="#" title="그룹목록"><img src="../../images/common/h_grouplist.png" alt="grouplist" />	</a>
+						<div class="grouplist-view"><!-- 그룹리스트레이어 -->
+							<span class="triangle"></span>
+							<div class="grouplist-layer">
+								<div class="mem-list">
+									<ul>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> <!-- 끝 -->
+					</div>
+					<div class="notice">
+						<a href="../main/notice.html" title="공지사항"><img src="../../images/common/h_notice.png" alt="notice" /></a>
+					</div>
+				</div>
+				<div class="right">
+					<ul>
+						<li class="member"><a href="#" title="멤버보기" ><img src="../../images/common/h_member.png" alt="member" 
+						/></a>
+
+							<div class="member-layer">
+								<span class="triangle"></span>
+								<div class="member-body">
+									<div class="member-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</li>
+						<li class="news"><a href="#" title="새소식" ><img src="../../images/common/h_news.png" alt="member" /></a>
+							<div class="news-layer">
+								<span class="triangle"></span>
+								<div class="news-body">
+									<div class="news-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="news-head">
+													<span class="news-name">유재석, 박명수 | <span class="news-group">기술연구소
+													</span></span>
+													<span class="news-date">2014-11-14</span>
+													<span class="news-txt">내일 오전 10시부터 세미나</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="chat"><a href="#" title="대화목록" ><img src="../../images/common/h_chat.png" alt="member" /></a>
+							<div class="chat-layer">
+								<span class="triangle"></span>
+								<div class="chat-body">
+									<div class="chat-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="chat-head">
+													<span class="chat-name">유재석, 박명수 | <span class="chat-member">2명</span></span>
+													<span class="chat-time">13분 전</span>
+													<span class="chat-txt">안녕하세요. 반갑습니다.</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="profile"><a href="../main/profile.html" title="프로필" ><img src="../../images/common/profile_sample.jpg" 
+						alt="profile" /></a></li>
+						<li class="login"><a href="#" title="로그인" ><img src="../../images/common/h_login.png" alt="member" 
+						/></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,55 @@
+<?include '../../include/header.html';?>
+		<div class="container">
+			<div>
+				<div class="main">
+					<?include '../../include/gnb.html';?>
+					<div class="contents" >
+						<div class="board">
+
+							<div class="head" data-num="2">
+								<div class="title"><h2>사진첩</h2></div>
+							</div>
+							<div class="gallery_album">
+								<div class="photo_album_add">
+									<a href="#">
+										<span class="icon_newalbum"></span>
+										사진추가하기
+									</a>
+								</div>
+								<div class="photo_album">
+									<div class="photo_list">
+										<ul>
+											<li><a href="#"><img src="../../images/album/album_list_sample_img.jpg" alt=""></a></li>
+											<li><a href="#"><img src="../../images/album/album_list_sample_img.jpg" alt=""></a></li>
+											<li><a href="#"><img src="../../images/album/album_list_sample_img.jpg" alt=""></a></li>
+											<li><a href="#"><img src="../../images/album/album_list_sample_img.jpg" alt=""></a></li>
+											<li><a href="#"><img src="../../images/album/album_list_sample_img.jpg" alt=""></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<!-- 상세페이지 임시 스크립트  -->
+							<script type="text/javascript">
+								$(function(){
+									
+									$(".photo_list ul li a").click(function(){
+										$(".dimmed").children("div").hide();
+										$(".dim, .dimmed").show();
+										$(".photo_view").show();
+										return false;
+									});
+									
+									$(".photo_view_close,.dim").click(function(){
+											$(".dim, .dimmed").hide();
+										});
+
+								});
+							</script>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<?include '../../include/footer.html';?>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="ko" style="overflow-y:auto;">
+<head>
+	<meta charset="euc-kr">
+	<title>싱싱톡</title>
+	<link href="../../css/css.css" rel="stylesheet" />
+	<link href="../../css/head.css" rel="stylesheet" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		$(function(){
+			// 댓글 수정삭제 메뉴 스크립트
+			$(".feed_more a").click(function(){
+				var display_state = $(this).parent().find(".more_layer").css("display");
+				if(display_state == "none"){
+					$(this).parent().find(".more_layer").show();
+				}else{
+					$(this).parent().find(".more_layer").hide();
+				}
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<div class="header">
+			<div class="wrap">
+				<h1 class="logo"><a href="../group/group.html" title="씽씽톡"><img src="../../images/common/h_logo.png" alt="logo" 
+				/></a></h1>
+				<div class="left">
+					<div class="grouplist">
+						<a href="#" title="그룹목록"><img src="../../images/common/h_grouplist.png" alt="grouplist" />	</a>
+						<div class="grouplist-view"><!-- 그룹리스트레이어 -->
+							<span class="triangle"></span>
+							<div class="grouplist-layer">
+								<div class="mem-list">
+									<ul>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+										<li><a href="#">
+											<img src="http://placehold.it/60x60" alt="">
+											<span class="group_name">기술연구소</span>
+										</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> <!-- 끝 -->
+					</div>
+					<div class="notice">
+						<a href="../main/notice.html" title="공지사항"><img src="../../images/common/h_notice.png" alt="notice" /></a>
+					</div>
+				</div>
+				<div class="right">
+					<ul>
+						<li class="member"><a href="#" title="멤버보기" ><img src="../../images/common/h_member.png" alt="member" 
+						/></a>
+
+							<div class="member-layer">
+								<span class="triangle"></span>
+								<div class="member-body">
+									<div class="member-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="name-phone">
+													<span class="mem-name">김주혁</span>
+													<span class="mem-group">기술연구소</span>
+													<span class="mem-phone">010-2684-7953</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</li>
+						<li class="news"><a href="#" title="새소식" ><img src="../../images/common/h_news.png" alt="member" /></a>
+							<div class="news-layer">
+								<span class="triangle"></span>
+								<div class="news-body">
+									<div class="news-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="news-head">
+													<span class="news-name">유재석, 박명수 | <span class="news-group">기술연구소
+													</span></span>
+													<span class="news-date">2014-11-14</span>
+													<span class="news-txt">내일 오전 10시부터 세미나</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="chat"><a href="#" title="대화목록" ><img src="../../images/common/h_chat.png" alt="member" /></a>
+							<div class="chat-layer">
+								<span class="triangle"></span>
+								<div class="chat-body">
+									<div class="chat-scroll">
+										<ul>
+											<li>
+												<span class="profile-img"><img src="http://placehold.it/60x60" alt=""></span>
+												<span class="chat-head">
+													<span class="chat-name">유재석, 박명수 | <span class="chat-member">2명</span></span>
+													<span class="chat-time">13분 전</span>
+													<span class="chat-txt">안녕하세요. 반갑습니다.</span>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="profile"><a href="../main/profile.html" title="프로필" ><img src="../../images/common/profile_sample.jpg" 
+						alt="profile" /></a></li>
+						<li class="login"><a href="#" title="로그인" ><img src="../../images/common/h_login.png" alt="member" 
+						/></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>		<div class="container">
+			<div>
+				<div class="main">
+
+					<div class="gnb">&nbsp;</div>
+
+					<div class="contents" >
+						<div class="board">
+
+							<div class="head">
+								<div class="title"><h2>프로필 설정</h2></div>
+							</div>
+
+							<div class="profile">
+								<div class="p_setting">
+									<div class="set_photo">
+										<p><img src="../../images/post/profile.jpg" alt="" /></p>
+										<input class="photo_submit" type="button" value="프로필사진변경"></input>
+									</div>
+									<div class="set_info">
+										<ul>
+											<li class="info_name">
+												<span>이름</span>
+												<input name="p_name" class="p_name" id="p_name" type="text" placeholder="항목 입력"></input>
+											</li>
+											<li class="info_birth">
+												<span>생일</span>
+												<select name="p_year" id="p_year" class="p_year">
+													<option value="">연도</option>
+													<option value="">2014</option>
+													<option value="">2013</option>
+													<option value="">2012</option>
+													<option value="">2011</option>
+													<option value="">2010</option>
+													<option value="">2009</option>
+													<option value="">2008</option>
+													<option value="">2007</option>
+													<option value="">2006</option>
+													<option value="">2005</option>
+													<option value="">2004</option>
+													<option value="">2003</option>
+													<option value="">2002</option>
+													<option value="">2001</option>
+												</select>
+												<select name="p_month" id="p_month" class="p_month">
+													<option value="">월</option>
+													<option value="">01</option>
+													<option value="">02</option>
+													<option value="">03</option>
+													<option value="">04</option>
+													<option value="">05</option>
+													<option value="">06</option>
+													<option value="">07</option>
+													<option value="">08</option>
+													<option value="">09</option>
+													<option value="">10</option>
+													<option value="">11</option>
+													<option value="">12</option>
+												</select>
+												<select name="p_day" id="p_day" class="p_day">
+													<option value="">일</option>
+													<option value="">01</option>
+													<option value="">02</option>
+													<option value="">03</option>
+													<option value="">04</option>
+													<option value="">05</option>
+													<option value="">06</option>
+													<option value="">07</option>
+													<option value="">08</option>
+													<option value="">09</option>
+													<option value="">10</option>
+													<option value="">11</option>
+													<option value="">12</option>
+													<option value="">13</option>
+													<option value="">14</option>
+													<option value="">15</option>
+												</select>
+											</li>
+											<li class="info_number">
+												<span>휴대폰번호</span>
+												<select name="p_num" id="p_num" class="p_num">
+													<option value="">선택</option>
+													<option value="">010</option>
+													<option value="">011</option>
+													<option value="">016</option>
+													<option value="">017</option>
+													<option value="">018</option>
+													<option value="">019</option>
+												</select>
+												<input name="p_number" class="p_number" id="p_number" type="text" placeholder="휴대폰번호를 입력하세요"></input>
+											</li>
+										</ul>
+										<input class="info_submit" type="button" value="확인"></input>
+									</div>
+								</div>
+								<div class="p_lang">
+									<h2>언어</h2>
+									<div class="lang_info">
+										<select name="lang_select" id="lang_select" class="lang_select">
+											<option value="">언어선택</option>
+											<option value="">한국어</option>
+											<option value="">English</option>
+											<option value="">日本語</option>
+										</select>
+										<input class="lang_submit" type="button" value="적용"></input>
+									</div>
+								</div>
+								<div class="p_device">
+									<h2>접속기기 정보</h2>
+									<p><span>아이폰5</span> 2014년 9월 18일 오후 5:40</p>
+									<input class="device_submit" type="button" value="해제"></input>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div>
+				<ul>
+					<li><a href="#" title="이용약관" >이용약관</a></li>
+					<li><a href="#" title="이용약관" >개인정보취급방침</a></li>
+					<li><a href="#" title="이용약관" >고객지원</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!--상세보기 -->
+	<div class="dim"></div>
+		<div class="dimmed">
+			<!-- 멤버 -->
+			<div class="member_profile">
+				<form>
+					<div class="profile_img"><img src="../../images/member/member_view_sample_img.jpg" alt=""></div>
+					<div class="profile_info">
+						<div class="profile_name"><p>유재석</p></div>
+						<div class="profile_detail_info">
+							<p class="profile_detail_group">기술연구소</p>
+							<p class="profile_detail_state">8월 14일, 010-2345-6789</p>
+						</div>
+						<div class="profile_open">
+							<div class="open_birthday open_box">
+							<input type="checkbox" id="birthday_ch" hidden>
+							<label for="birthday_ch">
+								<span class="checkbox_fake"></span>
+							이 그룹에 생일 공개</label></div>
+							<div class="open_phone open_box">
+							<input type="checkbox" id="phone_ch" hidden>
+							<label for="phone_ch">
+								<span class="checkbox_fake"></span>
+								이 그룹에 전화번호 공개</label>
+							</div>
+						</div>
+					</div>
+					<div class="member-profile-close">
+						<img src="../../images/member/member_profile_close.gif" alt="">
+					</div>
+				</form>
+			</div>
+			
+			<!-- 사진첩 -->
+			<div class="photo_view">
+				<a href="#" class="prev_photo"><img src="../../images/album/album_left_arrow.png" alt=""></a>
+				<a href="#" class="next_photo"><img src="../../images/album/album_right_arrow.png" alt=""></a>
+				<div class="photo_wrap">
+					<div class="photo_view_head">
+						<a href="#"><img src="../../images/post/thumb.jpg" alt=""></a>
+						<span class="write_name">김연아</span>
+						<span class="write_date">10월 2일 오후 4:50</span>
+						<span class="photo_view_close"><img src="../../images/album/photo_view_close.gif" alt=""></span>
+					</div>
+					<div class="_photo">
+						<div class="photo_list">
+							<ul>
+								<li><a href="#"><img src="../../images/album/album_view_sample_img.jpg" alt=""></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="comment">
+						<div class="comment_head">
+							<a href="#" class="profile_thum"><img src="../../images/album/album_comment_thumb.jpg" alt=""></a>
+							<span class="comment_writer">김연아</span>
+							<span class="comment_txt">댓글 좀 달아주세요.</span>
+							<span class="comment_write_date feed_more"><a href="#" class="comment_menu"><img 
+							src="../../images/album/icon_album_more.gif" alt=""></a>10월 2일 오후 7:32
+								<span class="more_layer">
+									<a href="#">수정하기</a>
+									<a href="#">삭제하기</a>
+								</span>
+							</span>
+						</div>
+						<div class="comment_write_form">
+							<form>
+								<textarea name="comment_text" id="comment_text" placeholder="댓글을 입력하세요"></textarea><input 
+								type="button" value="완료">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

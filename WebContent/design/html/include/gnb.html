@@ -1,0 +1,30 @@
+					<script>
+						$(function(){
+							//좌측메뉴 on/off 스크립트
+							var nav_num = $(".head").attr("data-num");
+							var nav_on = $(".menu .list li").eq(nav_num).attr("class").replace("off","on");
+							console.log(nav_on);
+							$(".menu .list li").eq(nav_num).removeClass();
+							$(".menu .list li").eq(nav_num).addClass(nav_on);
+						});
+					</script>
+					
+					<div class="gnb">
+						<div class="group">
+							<div class="icon"><img src="../../images/group/icon.png" alt="그룹아이콘" /></div>
+							<div class="name"><a href="#" title="그룹이름" >기업연구소</a></div>
+						</div>
+						<div class="menu">
+							<ul class="list">
+								<li class="news_off"><a href="alarm.html" title="알림존" >알림존</a></li>
+								<li class="board_off"><a href="board.html" title="게시판" >게시판</a></li>
+								<li class="album_off"><a href="album.html" title="사진첩" >사진첩</a></li>
+								<li class="chat_off"><a href="javascript:" title="채팅존" 
+								onclick="window.open('../main/chating.html','','width=470,height=640');return false;">채팅존
+								</a></li>
+								<li class="member_off"><a href="member.html" title="멤버" >멤버</a></li>
+							</ul>
+						</div>
+					</div>
+
+					
