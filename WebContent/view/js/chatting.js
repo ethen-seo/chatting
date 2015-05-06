@@ -212,7 +212,7 @@ define("view_inviteTemplate",["jquery","api","text!templates/inviteTemplate.html
 define("text!templates/invitableMemberTemplate.html",[],function(){
     return '<script type="x-jquery-tmpl"><img src="${thumbnail}" class="profile" alt="" width="44" height="44">\n<span class="member_name">${name}</span>\n<span class="check_wrap">\n\t<input type="checkbox" id="check_member_${cid}" name="check_member_${cid}" value="">\n\t<label class="check_member" for="check_member_${cid}">\n\t\t<span class="checkbox_fake"></span>1:1\n\t</label>\n</span></script>';
 });
-define("view_invitableMemberTemplate",["jquery","api","text!templates/invitableMemberTemplate.html"],function($,a,t){
+define("view_invitableMemberTemplate",["jquery","util","api","text!templates/invitableMemberTemplate.html"],function($,u,a,t){
 	var view = {
 			initialize :  function(){
 				
