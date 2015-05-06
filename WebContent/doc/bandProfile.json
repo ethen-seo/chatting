@@ -1,0 +1,36 @@
+{  
+   "result_code":1,
+   "result_data":{  
+      "name":"서영일",
+      "cellphone":"821033661397",
+      "face":"http://band.phinf.campmobile.net/20130405_38/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_13651494868383KbVI_JPEG/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_4224433721797927070.jpg",
+      "thumbnail":"http://band.phinf.campmobile.net/20130405_38/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_13651494868383KbVI_JPEG/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_4224433721797927070.jpg?type=s75",
+      "birthday":"0628",
+      "email":"",
+      "country":"KR",
+      "birthdate":"????0628+",
+      "naver_id":"xhans",
+      "id":"m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4",
+      "user_no":17799208,
+      "need_cellphone_change":false,
+      "need_cellphone_authorize":false,
+      "is_lunar":false,
+      "facebook_user_id":"",
+      "line_user_id":"",
+      "is_exist_password":false,
+      "is_open_me2day":false,
+      "contract_language":"ko_KR",
+      "pc_web_language":"ko",
+      "country_code":82,
+      "is_email_verified":false,
+      "personal_info_agreements":{  
+         "birthday":true,
+         "phone_number":true,
+         "email":false,
+         "location":false,
+         "profile_image":true,
+         "gender":false,
+         "contacts":false
+      }
+   }
+}
