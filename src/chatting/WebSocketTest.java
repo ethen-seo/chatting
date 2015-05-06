@@ -44,7 +44,7 @@ public class WebSocketTest {
 	    	// 접속자마다 한개의 세션이 생성되어 데이터 통신수단으로 사용됨
 	        this.session = session;
 	        connections.add(this);
-	        String message = String.format("* %s %s", nickname, "has joined.");
+	        String message = String.format("* %s %s", nickname, "접속.");
 	        broadcast(message);
 	    }
 
@@ -52,7 +52,7 @@ public class WebSocketTest {
 	    @OnClose
 	    public void end() {
 	        connections.remove(this);
-	        String message = String.format("* %s %s", nickname, "has disconnected.");
+	        String message = String.format("* %s %s", nickname, "접속해제.");
 	        broadcast(message);
 	    }
 
@@ -118,7 +118,7 @@ public class WebSocketTest {
 	                }
 	                // 한 클라이언트의 퇴장을 모든 이용자에게 알린다
 	                String message = String.format("* %s %s",
-	                        client.nickname, "has been disconnected.");
+	                        client.nickname, "퇴장.");
 	                broadcast(message);
 	            }
 	        }

@@ -7,9 +7,9 @@
 .chat_pop .status_bar{position:fixed;left:0;right:0;top:0;z-index:10;height:50px;min-width:400px;text-align:center;border-bottom:1px solid #bdbdbd;background:#fff;}
 .chat_pop .status_bar strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;padding:0 45px;line-height:50px;color:#333;font-size:16px;}
 .chat_pop .status_bar strong .member_num{color:#5dd385;font-size:14px;}
-.chat_pop .status_bar .pop_setting{position:absolute;right:14px;bottom:15px;width:26px;height:21px;margin:0;padding:0;border:0;background:url(images/icon_setting_mouseover.png) no-repeat 0 50%;;cursor:pointer;}
-.chat_pop .status_bar .pop_setting img{position:relative;top:6px;}
-.chat_pop .status_bar .pop_setting:hover img{visibility:hidden;}
+.chat_pop .header_chating .pop_setting{position:absolute;right:25px;bottom:20px;width:26px;height:21px;margin:0;padding:0;border:0;background:url(images/icon_setting_mouseover.png) no-repeat 0 50%;;cursor:pointer;}
+.chat_pop .header_chating .pop_setting img{position:relative;top:6px;}
+.chat_pop .header_chating .pop_setting:hover img{visibility:hidden;}
 .chat_pop .pop_menu{display:none;position:absolute;top:50px;width:100%;height:99px;padding-bottom:1px;background:#585862;border-top:1px solid #45454e;border-bottom:1px solid #cacacc;}
 .chat_pop .pop_menu .menu_list{overflow:hidden;zoom:1;height:100%;text-align:left;border-bottom:1px solid #45454e;white-space:nowrap;}
 .chat_pop .pop_menu .menu_list li{display:inline-block;width:33.33%;height:100%;border-left:1px solid #4d4d56;}
@@ -54,9 +54,9 @@
 .chatroom .log_my .pf_img,
 .chatroom .log_my .pf_name{display:none;}
 .chatroom .log_my .msg{position:relative;float:right;max-width:62%;padding-bottom:29px;text-align:right;font-size:0;}
-.chatroom .log_my .msg .msg_main{display:inline-block;width:95%;word-wrap:break-word;padding-right:9px;text-align:left;background:url(images_bubble_knob2.png) no-repeat 100% 0;}
+.chatroom .log_my .msg .msg_main{display:inline-block;width:95%;word-wrap:break-word;padding-right:9px;text-align:left;background:url(images/chating_msg_bg_my.gif) no-repeat 100% 0;}
 *:first-child+html .chatroom .log_my .msg .msg_main{display:inline;}
-.chatroom .log_my .msg .msg_main ._message_body_wrap{word-wrap:break-word;padding:10px 12px;font-size:14px;color:#353737;background:#c3eed2;border-radius:5px 0 5px 5px;}
+.chatroom .log_my .msg .msg_main ._message_body_wrap{word-wrap:break-word;padding:10px 12px;font-size:14px;color:#353737;background:#ffb81e;/*border-radius:5px 0 5px 5px;*/}
 .chatroom .log_my .msg.msg_sticker .msg_main,
 .chatroom .log_my .msg.msg_sticker .msg_main ._message_body_wrap{background:none;}
 .chatroom .log_my .msg.msg_photo .msg_main ._message_body_wrap{padding:3px;}
@@ -71,10 +71,10 @@
 .chatroom .log_friend .pf_name .author{}
 .chatroom .log_friend .pf_name .pf_nick{color:#999;}
 .chatroom .log_friend .msg{position:relative;float:left;display:inline-block;padding-top:5px;padding-bottom:29px;font-size:0;}
-.chatroom .log_friend .msg .msg_main{display:inline-block;word-wrap:break-word;padding-left:9px;text-align:left;background:url(images_bubble_knob.png) no-repeat 0 0;}
+.chatroom .log_friend .msg .msg_main{display:inline-block;word-wrap:break-word;padding-left:9px;text-align:left;background:url(images/chating_msg_bg_you.gif) no-repeat 0 0;}
 *:first-child+html .chatroom .log_friend .msg .msg_main{display:inline;}
-.chatroom .log_friend .msg .msg_main ._message_body_wrap{padding:10px 12px;color:#353737;font-size:14px;background:#ededf0;border-radius:0 5px 5px 5px;word-break: break-word;}
-.chatroom .log_friend .msg:hover .msg_main{background-image:url(images_bubble_knob_over.png);}
+.chatroom .log_friend .msg .msg_main ._message_body_wrap{padding:10px 12px;color:#353737;font-size:14px;background:#ededf0;/*border-radius:0 5px 5px 5px;*/word-break: break-word;}
+.chatroom .log_friend .msg:hover .msg_main{background-image:url(images/bubble_knob_over.png);}
 .chatroom .log_friend .msg:hover .msg_main ._message_body_wrap{background:#e7e7eb;}
 .chatroom .log_friend .msg .msg_main ._message_body_wrap a{word-break:break-all;}
 .chatroom .log_friend .msg .msg_main .chat_report{display:none;position:absolute;z-index:2;left:9px;bottom:0;padding:3px 8px 4px 26px;white-space:nowrap;color:#555;font-size:12px;border:1px solid #c3c3c8;border-radius:4px;background:#fff url(images/template/ico_report_on.png) no-repeat 7px 50%;}
@@ -133,8 +133,9 @@ body:first-of-type .chatroom .msg.log_3rd .msg_main p{line-height:19px;}
 .chat_pop .chat_input{position:fixed;bottom:0;width:100%;height:127px;min-width:400px;}
 .chat_pop.on_sticker .chat_input{padding-top:194px;}
 .chat_pop .chat_input .chat_btn_wrap{height:38px;margin:0;background:#fafafc;border-top:1px solid #d5d5d8;border-bottom:1px solid #e4e4e7;}
-.chat_pop .chat_input .pop_photo{overflow:hidden;position:relative;top:8px;display:inline-block;width:23px;height:23px;margin:0 6px 0 18px;text-indent:-9999px;text-align:center;background:url(images/board/ico_plus.png) no-repeat 100% 0;cursor:pointer;}
-.chat_pop .chat_input .pop_photo:hover{background-image:url(images/board/ico_plus_on.png)}
+.chat_pop .chat_input .pop_photo{overflow:hidden;position:relative;top:8px;display:inline-block;width:33px;height:33px;margin:0 2px 0 10px;text-indent:-9999px;text-align:center;background:url(images/file.png) no-repeat 100% 0;cursor:pointer;}
+.chat_pop .chat_input .pop_photo:hover{cursor:pointer;}
+/*.chat_pop .chat_input .pop_photo:hover{background-image:url(images/board/ico_plus_on.png)}*/
 .chat_pop .chat_input .pop_photo .find_photo{position:absolute;left:0;top:0;height:33px;width:41px;opacity:0;filter:alpha(opacity=0);-ms-filter:"alpha(Opacity=0)";cursor:pointer;}
 .chat_pop .chat_input .pop_sticker{position:relative;top:1px;display:inline-block;width:23px;height:23px;margin:0 0 0 7px;padding:0;text-indent:-9999px;text-align:center;border:0;background:url(images/skin/write_form_function.png) no-repeat 0 -2px;cursor:pointer;}
 *:first-child+html .chat_pop .chat_input .pop_photo,
@@ -270,7 +271,7 @@ body:first-of-type .chatroom .msg.log_3rd .msg_main p{line-height:19px;}
 .chat_pop .member_main .member_list li:first-child{margin:0;padding:0;background-image:none;}
 .chat_pop .member_main .member_list li .profile{position:absolute;top:15px;left:20px;}
 .chat_pop .member_main .member_list li .member_name{display:inline-block;padding-left:78px;line-height:74px;font-size:14px;color:#000;}
-.chat_pop .member_main .member_list li .go_chat{position:absolute;right:19px;top:30px;height:24px;padding-left:33px;line-height:20px;color:#858585;background:url(images/ico_chatting.png) no-repeat 0 0;}
+.chat_pop .member_main .member_list li .go_chat{position:absolute;right:19px;top:30px;height:24px;padding-left:33px;line-height:20px;color:#858585;}
 .chat_pop .member_main .member_list li .check_wrap{position:absolute;top:26px;right:41px;}
 .chat_pop .member_main .member_list li .check_wrap input{position:absolute;z-index:1;top:6px;}
 .chat_pop .member_main .member_list li .check_wrap label{display:inline-block;text-indent:-9999px;vertical-align:middle;}

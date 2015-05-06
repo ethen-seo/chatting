@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>채팅존</title>
+<link rel="stylesheet" type="text/css" href="../css/template.css" />
 <link rel="stylesheet" type="text/css" href="../css/chatting.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css"  />
 <link rel="stylesheet" type="text/css" href="../css/head.css" />
@@ -12,6 +13,7 @@
 </head>
 <body class=""> 
 	<div class="_contents_body chat_pop">
+		<!-- 멤버 리스트 컨테이너  -->
 		<div class="member_list" style="display:none;">	
 			<div class="header_chating">
       			<h1 class="name_chating">대화 멤버</h1>
@@ -31,12 +33,13 @@
 				</ul>
     		</div>
     		<div class="confirm_box">
-      			<button class="btn_confirm" href="#">
+      			<button class="btn_confirm">
       				<span>완료</span>
     			</button>
     		</div>
     		<div class="deemed"></div>
     	</div>
+    	<!-- 대화상대 초대 컨테이너 -->
     	<div class="chat_pop member_search" style="display:none;">      
     		<div class="header_chating">
         		<h1 class="name_chating">대화상대 선택</h1>
@@ -115,7 +118,8 @@
         		<div class="dim" style="display: none;"></div>
       		</div>
       	</div>
-		<div class="chat_container">
+      	<!-- 채팅 컨테이너 -->
+		<div class="chat_container" >
 			<div class="all">
     			<div class="header_chating">
       				<h1 class="name_chating">Testing (3 명)</h1>
@@ -134,99 +138,28 @@
     			<div class="container_chating chat_main chatroom">
       				<div id="chat_list">
       					<div class="chat_list">
-      						<div class="_chat_list_container eoc">
-      							<div class="log_wrap log_previous" style="display: none;">
-    								<a style="" href="#" class="log_inner">
-    									<span class="txt">이전 대화 더 보기</span>
-    								</a>
-								</div>
-								<div class="log_wrap log_event">
-									<div class="log_inner">
-    									<p class="_message_body_wrap">2015년 4월 24일 금요일</p>
-    									<span class="lt"></span>
-    									<span class="rt"></span>
-    									<span class="lb"></span>
-    									<span class="rb"></span>
-									</div>
-								</div>
-								<div class="log_wrap log_friend">
-  							<span class="pf_img">
-  								<img width="70" height="70" alt="friend1" src="../../design/html_noinc/images/post/thumb.jpg">
-  							</span>
-  							<span class="pf_name">
-  								<span class="author">친구1</span> 
-  								<span class="pf_nick"></span>
-  							</span>
-  							<div class="msg">
-    							<div class="msg_main">
-      								<p class="_message_body_wrap">짧은 메세지 </p>
-      								<span class="msg_aside">
-      									<span class="read">2 읽음</span>
-      									<span class="time">오후 3:24</span>
-      								</span>
-    							</div>
-  							</div>
-  						</div>
-  						<div class="log_wrap log_friend">
-  							<span class="pf_img">
-  								<img width="70" height="70" alt="friend2" src="http://s.cmstatic.net/pcweb/res/149992/images/template/profile_60x60.gif?type=s75">
-  							</span>
-  							<span class="pf_name">
-  								<span class="author">친구2</span> 
-  								<span class="pf_nick"></span>
-  							</span>
-  							<div class="msg">
-    							<div class="msg_main">
-      								<p class="_message_body_wrap">엄청 기~~~~인 메세지  엄청 기~~~~인 메세지
-      								 ~~ ~~ ~ !!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      								 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      								 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      								 </p>
-      								<span class="msg_aside">
-      									<span class="read">2 읽음</span>
-      									<span class="time">오후 3:25</span>
-      								</span>
-    							</div>
-  							</div>
-  						</div>
-  						<div class="log_wrap log_my">
-							<span class="pf_img">
-								<img width="48" height="48" alt="나" src="http://band.phinf.campmobile.net/20130405_38/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_13651494868383KbVI_JPEG/m2_2k3p58kazyiovdxsvvkoyyfpzqhxekoai4qgdh4_4224433721797927070.jpg?type=s75">
-							</span>
-  							<span class="pf_name">
-  								<span class="author">나</span>
-  								<span class="pf_nick">ㅡㅡ</span>
-  							</span>
-  							<div class="msg">
-    							<div class="msg_main">
-      								<p class="_message_body_wrap">내 메세지</p>
-      								<span class="msg_aside">
-      									<span class="read">1 읽음</span>
-      									<span class="time">오후 12:02</span>
-      								</span>
-      							</div>
+      						<div class="_chat_list_container">
+      							
       						</div>
-      					</div>
-      				</div>
-      			</div>		
-      		</div>      
-    	</div>
+      					</div>		
+      				</div>      
+    			</div>
 		<div class="new_message_alert_wrap" style="display: none; opacity: 0;">
 			<p class="message_txt"></p>
 		</div>
-		<div class="chat_input_wrap">
-			<form class="input_chat">
+		<div class="_chat_input_wrap">
+			<form class="chat_input">
 				<div class="chat_btn_wrap">
 					<span class="pop_photo">
 						<input type="file" class="find_photo" id="btn_chat_pop_photo_upload">
 					</span>
-				</div>	
+				</div>
 				<div class="msg_form">	
-					<textarea type="input" name="msg_input" class="msg_input _use_keyup_event" placeholder="채팅 메시지 입력"></textarea>
-					<input type="submit" class="msg_sutmit" value="전송" style="opacity: 0; z-index: -11;">
+					<textarea type="input" name="msg_input" class="msg_input _use_keyup_event" placeholder="내용을 입력하세요"></textarea>
+					<input type="submit" class="msg_sutmit" value="전송" style="opacity: 0; z-index: 1;">
 				</div>
 			</form>
-		</div>	
+		</div>
 
     	<div class="deemed"></div>
 		</div>
