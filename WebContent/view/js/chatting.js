@@ -3,7 +3,12 @@
  *  @author youngil.seo
  *  @since 2015.04.24
  */
-
+/**
+ * 공통
+ */
+define("common_chatting",["jquery"],function($){
+	
+});
 /**
  * api 모듈
  */
@@ -46,8 +51,10 @@ define("api",["jquery"],function($){
 			/**
 			 * 
 			 */
-			getMessage : function(){
+			getMessage : function(msg){
+				var data = {"isMine":"friend","name":"친구","thumbnail":"../../design/html_noinc/images/post/thumb.jpg","nickname":"별명","message":msg.data,"readCount":1};
 				
+				return data;
 			}	
 			
 	}
@@ -68,11 +75,17 @@ define("util",["jquery","tmpl"],function($){
 				return str;
 			},
 			/**
+			 * timeStamp
+			 */
+			getTimeStamp : function(){
+				return date.getTime();
+			},
+			/**
 			 * 시간 정보
 			 */
 			getTimeString : function(){
 				var time = date.toLocaleTimeString().split(":");
-				return time[0] + time[1];
+				return time[0] +":"+ time[1];
 			},
 			/**
 			 * 요일 정보
@@ -86,12 +99,35 @@ define("util",["jquery","tmpl"],function($){
 			 */
 			getFullDateString : function(){
 				var year = date.getFullYear(),
-					month = date.getMonth(),
-					day = date.getDate;
+					month = date.getMonth()+1,
+					day = date.getDate();
 				return year + '년 ' + month + '월 '+ day + '일';
 			},
+			/**
+			 * jqeury template
+			 */
 			template : function(el,template,data){
 				$(template).tmpl(data).appendTo(el);
+			},
+			/**
+			 * 날짜 비교
+			 */
+			compareDate : function(timestamp,cTimeStamp){
+				var date = new Date(timestamp),
+	        		year = date.getFullYear(),
+	        		month = date.getMonth(),
+	        		day = date.getDate(),
+	        		now = new Date(cTimeStamp),
+	        		nYear = now.getFullYear(),
+	        		nMonth = now.getMonth(),
+	        		nDay = now.getDate();
+				
+				if( year == nYear && month == nMonth && day == nDay){
+					return true;
+				} else {
+					return false;
+				}
+				
 			}
 	}
 	return util;
@@ -99,31 +135,55 @@ define("util",["jquery","tmpl"],function($){
 /**
  * socket 통신 모듈
  */
-define("webSocket",[],function(){
+define("webSocket",["jquery","view","util"],function($,v,u){
 	var socket,
 		host = "ws://localhost:8080/chatting/tttSocket"; 
 		
 	var ws = {
+			/**
+			 * websocket 연결
+			 */
 			connect : function(){
 				try {
 					socket = new WebSocket(host);
+					/**
+					 * socket open
+					 */
 					socket.onopen = function(){  
 		                console.log('Socket Status:' +socket.readyState + '(open)');  
 		             }  
-		  
+					/**
+					 * socket on message
+					 */
 		            socket.onmessage = function(msg){  
-		            	console.log('Received:' + msg.data );  
+		            	console.log('Received:' + msg.data );
+		            	/**
+		            	 * 이벤트 로그의 마지막 로그를 가져와서 날짜 정보를 체크
+		            	 */
+		            	var eventLog = $("div.log_event:last p._message_body_wrap").attr("data-timeStamp");
+		            	//메시지가 전송된 시간과 마지막 이벤트 로그의 날짜 정보를 비교해서 다시 이벤트 로그를 삽입할지 결정
+		            	if( !u.compareDate(msg.timeStamp,parseInt(eventLog)) ){
+		            		v.displayEvent();
+		            	}
+		            	//메시지 표시
+		            	v.displayMessage(msg);
+		            
 		              }  
-		  
-		              socket.onclose = function(){  
-		            	  console.log('Socket Status:' + socket.readyState +'(Closed)');  
-		              }           
+		            /**
+		             *  socket close
+		             */
+		            socket.onclose = function(){  
+		            	console.log('Socket Status:' + socket.readyState +'(Closed)');  
+		            }           
 		  
 				} catch (e) {
 					// TODO: handle exception
 					console.log('socket connect Error');
 				}
 			},
+			/**
+			 * websocket send
+			 */
 			send : function(msg){
 				if( msg == "" ){
 					console.log('메시지가 없음');
@@ -138,12 +198,20 @@ define("webSocket",[],function(){
  * 메시지 템플릿
  */
 define("text!templates/messageTemplate.html",[],function(){
-	return '<% var StringUtil = require(\'util/customStringUtil\');\t%>\n<% var BandUtil = require(\'util/bandUtil\');\t%>\n  <span class="pf_img"><img width="48" height="48" alt="<%- writer.name%>" src="<%- BandUtil.replaceHttpsRes(writer.face)%>"></span>\n  <span class="pf_name"><span class="author"><%- writer.name%></span> <span class="pf_nick"><%-writer.description%></span></span>\n  <div class="msg<%-msgOption%>">\n    <div class="msg_main">\n      <p class="_message_body_wrap">\n      \t<%=messageBody%>\n      </p>\n      <% if (reportable) { %>\n      <a href="#" class="chat_report _report_button"><%-G.STR(\'pcweb.chat.chatmessage.btn.report\') %></a>\n      <% } %>\n      <span class="msg_aside"><span class="read"><% if(message.read_count > 1){ %> <%-G.STR(\'pcweb.chat.chatmessage.label.read_count\',message.read_count - 1)%> <%}; %></span><span class="time"><%-G.getDisplayTime(new Date(message.created_at*1), \'H\') %></span></span>\n    </div>\n  </div>';
+	return '<script type="text/x-jquery-tmpl"><div class="log_wrap log_${isMine}"> <span class="pf_img"><img width="48" height="48" alt="${name}" src="${thumbnail}"></span>\n  <span class="pf_name"><span class="author">${name}</span> <span class="pf_nick">${nickname}</span></span>\n  <div class="msg">\n    <div class="msg_main">\n      <p class="_message_body_wrap">\n      \t ${message}\n      </p>\n      <span class="msg_aside"><span class="read">${readCount} 읽음</span><span class="time">${time}</span>\n    </div>\n  </script>';
 });
-define("view_messageTemplate",["jquery","api","text!templates/messageTemplate.html"],function($,a,t){
+define("view_messageTemplate",["jquery","util","api","text!templates/messageTemplate.html"],function($,u,a,t){
 	var view = {
-		initialize : function(){
+		initialize : function(msg){
+			var el = $("div._chat_list_container"),
+				child = el.find(".log_wrap");
 			
+			var time = u.getTimeString();
+			t = t.replace("${time}",time);
+			
+			var data = a.getMessage(msg);
+			
+			u.template(el,t,data);
 		}	
 	};
 	return view;
@@ -152,12 +220,16 @@ define("view_messageTemplate",["jquery","api","text!templates/messageTemplate.ht
  * 이벤트 템플릿
  */
 define("text!templates/eventTemplate.html",[],function(){
-	return '<div class="log_inner">\n    <p class="_message_body_wrap"><%-message%></p>\n    <span class="lt"></span><span class="rt"></span><span class="lb"></span><span class="rb"></span>\n</div>';
+	return '<script type="text/x-jquery-tmpl"><div class="log_wrap log_event"><div class="log_inner">\n    <p class="_message_body_wrap" data-timeStamp="${timeStamp}">${event}</p>\n    <span class="lt"></span><span class="rt"></span><span class="lb"></span><span class="rb"></span>\n</div></div></script>';
 });
-define("view_eventTemplate",["jquery","api","text!templates/eventTemplate.html"],function($,a,t){
+define("view_eventTemplate",["jquery","util","api","text!templates/eventTemplate.html"],function($,u,a,t){
 	var view = {
 		initialize : function(){
+			var container = $("div._chat_list_container"),
+				str = u.getFullDateString() +" "+ u.getDateString(),
+				timeStamp = u.getTimeStamp();
 			
+			u.template(container,t,{"event":str,"timeStamp":timeStamp});
 		}	
 	};
 	return view;
@@ -221,16 +293,14 @@ define("view_invitableMemberTemplate",["jquery","util","api","text!templates/inv
 	return view;
 });
 
-
-define("common_chatting",["jquery","event","util"],function(){
-	
-});
-
 /**
  * view 모듈
  */
-define("view",["jquery","api","text!templates/messageTemplate.html","text!templates/eventTemplate.html","view_memberListTemplate","view_memberItemTemplate"],function($,a,b,c,d,e){
+define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_memberListTemplate","view_memberItemTemplate"],function($,a,b,c,d,e){
 	var view = {
+			/**
+			 * 멤버 리스트 표시
+			 */
 			displayMemberList : function(){
 				d.initialize();
 				e.initialize();
@@ -238,14 +308,35 @@ define("view",["jquery","api","text!templates/messageTemplate.html","text!templa
 			displayThumbnail : function(){
 				
 			},
-			displayMessage : function(){
-				
+			/**
+			 * 메시지 표시
+			 */
+			displayMessage : function(msg){
+				b.initialize(msg);
 			},
+			/**
+			 * 대화상대 초대 표시
+			 */
 			displayInvite : function(){
 				
 			},
+			/**
+			 * 대화 싱크
+			 */
 			displaySync : function(){
 				
+			},
+			/**
+			 * 이벤트 로그 표시
+			 */
+			displayEvent : function(){
+				c.initialize();
+			},
+			/**
+			 * 최초 채팅방 로딩시에 채팅 내용 표출
+			 */
+			initChatting : function(){
+								
 			}
 	}
 	return view;
@@ -277,10 +368,12 @@ define("callback",["jquery","webSocket","view"],function($,ws,v){
 			},
 			//대화멤버 버튼
 			memberBtnClick : function(e){
+				e.preventDefault();
 				v.displayMemberList();
 			},
 			//대화초대 버튼
 			inviteBtnClick : function(e){
+				e.preventDefault();
 				v.displayInvite();
 			},
 			//대화삭제 버튼
@@ -297,6 +390,7 @@ define("callback",["jquery","webSocket","view"],function($,ws,v){
 			},
 			//썸네일 클릭
 			thumbnailClick : function(e){
+				e.preventDefault();
 				v.displayThumbnail();
 			},
 			//전송버튼 표출
@@ -310,6 +404,7 @@ define("callback",["jquery","webSocket","view"],function($,ws,v){
 			},
 			//전송버튼클릭, 엔터키입력
 			sendMsg : function(e){
+				e.preventDefault();
 				var msg = $(".msg_input").val();
 				if( e.type == "click" ){
 					ws.send(msg);
@@ -322,7 +417,7 @@ define("callback",["jquery","webSocket","view"],function($,ws,v){
 				}
 				$(".msg_input").val("");
 				$(".msg_sutmit").css("opacity","0");
-				v.displayMessage();
+				
 			},
 			//파일전송
 			sendFile : function(e){
@@ -385,18 +480,16 @@ define("event",["jquery","callback"],function($,callback){
 	}
 	return event;
 });
-define("common_chatting",["jquery","event","util"],function(){
-	
-});
+
 /**
  * chatting 모듈
  */
 define(["event","webSocket"],function(e,ws){
+	
 	var chatting = {
-			init : function(){
+			init : function(data){
 				e.initEvent();
 				ws.connect();
-				
 			}
 	}
 	return chatting;

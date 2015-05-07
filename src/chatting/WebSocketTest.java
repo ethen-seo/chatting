@@ -16,7 +16,7 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint("/tttSocket")
 public class WebSocketTest {
 	
-	 private static final String GUEST_PREFIX = "Guest";
+	 private static final String GUEST_PREFIX = "친구";
 	    // AtomicInteger 클래스는 getAndIncrement()를 호출할 때마다 카운터를 1씩 증가하는 기능을 가지고 있다
 	    private static final AtomicInteger connectionIds = new AtomicInteger(0);
 	    // CopyOnWriteArraySet 을 사용하면 컬렉션에 저장된 객체를 좀더 간편하게 추출할 수 있다
@@ -45,7 +45,8 @@ public class WebSocketTest {
 	        this.session = session;
 	        connections.add(this);
 	        String message = String.format("* %s %s", nickname, "접속.");
-	        broadcast(message);
+	        //broadcast(message);
+	        System.out.println(message);
 	    }
 
 
@@ -53,7 +54,8 @@ public class WebSocketTest {
 	    public void end() {
 	        connections.remove(this);
 	        String message = String.format("* %s %s", nickname, "접속해제.");
-	        broadcast(message);
+	        //broadcast(message);
+	        System.out.println(message);
 	    }
 
 	    // 현재 세션과 연결된 클라이언트로부터 메시지가 도착할 때마다 새로운 쓰레드가 실행되어 incoming()을 호출함
@@ -63,7 +65,7 @@ public class WebSocketTest {
 	    	String threadName = "Thread-Name:"+Thread.currentThread().getName();
 	    	System.out.println(threadName+", "+nickname);
 	        if(message==null || message.trim().equals("")) return;
-	        String filteredMessage = String.format("%s: %s", nickname, message);
+	        String filteredMessage = String.format("%s", message);
 	        broadcast(filteredMessage);
 	    }
 
