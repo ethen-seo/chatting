@@ -212,7 +212,13 @@ define("view_messageTemplate",["jquery","util","api","text!templates/messageTemp
 			var data = a.getMessage(msg);
 			
 			u.template(el,t,data);
-		}	
+			this.event();
+		},
+		event : function(){
+			$("span.pf_img").on("click",function(e){
+				console.log("test");
+			});
+		}
 	};
 	return view;
 });
@@ -230,7 +236,10 @@ define("view_eventTemplate",["jquery","util","api","text!templates/eventTemplate
 				timeStamp = u.getTimeStamp();
 			
 			u.template(container,t,{"event":str,"timeStamp":timeStamp});
-		}	
+		},
+		event : function(){
+			
+		}
 	};
 	return view;
 });
@@ -246,7 +255,17 @@ define("view_memberItemTemplate",["jquery","util","api","text!templates/memberIt
 				var el = $("ul.member_list"),
 					data = a.getMemberList();
 				u.template(el,t,data);	
-			}	
+			},
+			event : function(){
+				//TODO : 썸네일
+				$("img.profile").on("click",function(e){
+					
+				});
+				//TODO : 1:1 대화방 개설
+				$(".go_chat").on("click",function(e){
+					
+				});
+			}
 	};
 	return view;
 });
@@ -260,43 +279,75 @@ define("view_memberListTemplate",["jquery","api","text!templates/memberListTempl
 	var view = {
 			initialize : function(){
 				$("._contents_body").html(t);
-			}	
+				this.event();
+			},
+			event : function(){
+				$(".btn_confirm").on("click",function(e){
+					//TODO : 채팅화면으로 다시 이동
+					console.log("채팅화면으로 다시 이동");
+				});
+			}
 	};
 	return view;
 });
 /**
- * 대화상대초대 컨테이너
+ * 대화상대초대 컨테이너 템플릿
  */
 define("text!templates/inviteTemplate.html",[],function(){
     return '      <div class="header_chating">\n        <h1 class="name_chating">대화 상대 선택</h1>\n\t\t<div class="pop_form">\n           <div class="band_select _custom_selector_wrap">\n            <a href="#" class="selected_name _custom_selector_selected">&nbsp;</a>\n            <ul class="band_list _custom_selector_list_wrap" style="display:none">\n            </ul>\n          </div>\n          <div class="member_search">\n          \t<input type="text" id="search_input" name="search_input" placeholder="멤버검색" class="search_input">\n            <button class="search_x"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/input_x.gif" alt="" width="17" height="17" /></button>\n            <button type="submit" class="search_submit"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/search_submit.png" alt="" width="18" height="18" /></button>\n          </div>\n        </div>\n      </div>\n      <div class="chat_layer_main">\n        <form method="post" action="#">\n          <div class="member_main">\n          \t<div class="_member_list_wrap">\n          \t</div>\n            \n\t\t\t\n          </div>\n\t\t  <div class="_selected_member_wrap">\n\t\t  </div>\n          <div class="confirm_box">\n            <button type="button" class="btn_cancel"><span>취소</span></button>\n            <button type="sutmit" class="btn_confirm"><span>초대</span></button>\n          </div>\n        </form>\n        <div class="dim"></div>\n      </div>';
 });
-define("view_inviteTemplate",["jquery","api","text!templates/inviteTemplate.html"],function($,a,t){
+define("view_inviteTemplate",["jquery","util","api","text!templates/inviteTemplate.html"],function($,u,a,t){
 	var view = {
 			initialize : function(){
+				var el = $(""),
+					data = {};
+				u.template(el,t,data);
+				this.event();
+			},
+			event : function(){
 				
 			}
 	};
 	return view;
 });
 /**
- * 대화상대 초대 멤버 
+ * 대화상대 초대 멤버 템플릿
  */
 define("text!templates/invitableMemberTemplate.html",[],function(){
     return '<script type="x-jquery-tmpl"><img src="${thumbnail}" class="profile" alt="" width="44" height="44">\n<span class="member_name">${name}</span>\n<span class="check_wrap">\n\t<input type="checkbox" id="check_member_${cid}" name="check_member_${cid}" value="">\n\t<label class="check_member" for="check_member_${cid}">\n\t\t<span class="checkbox_fake"></span>1:1\n\t</label>\n</span></script>';
 });
-define("view_invitableMemberTemplate",["jquery","util","api","text!templates/invitableMemberTemplate.html"],function($,u,a,t){
+define("view_invitableMemberTemplate",["jquery","util","api","text!templates/invitableMemberTemplate.html",],function($,u,a,t){
 	var view = {
 			initialize :  function(){
+				
+			},
+			event : function(){
 				
 			}
 	}
 	return view;
 });
-
+/**
+ * 썸네일 템플릿
+ */
+define("text!templates/thumbnailTemplate.html",[],function(){
+	return '<script type="text/x-jquery-tmpl"><div><div class="dim"></div><div class="dimmed"><div class="member_profile"><form><div class="profile_img"><img src="../../images/member/member_view_sample_img.jpg" alt=""></div><div class="profile_info"><div class="profile_name"><p>유재석</p></div><div class="profile_detail_info"><p class="profile_detail_group">기술연구소</p><p class="profile_detail_state">8월 14일, 010-2345-6789</p></div></div><div class="member-profile-close"><img src="../../images/member/member_profile_close.gif" alt=""></div></form></div></div></div></div></script>';
+});
+define("view_thumbnailTemplate",["jquery","util","api","text!templates/thumbnailTemplate.html"],function($,u,a,t){
+	var view = {
+			initialize : function(){
+				
+			},
+			event : function(){
+				
+			}
+	}
+	return view;
+});
 /**
  * view 모듈
  */
-define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_memberListTemplate","view_memberItemTemplate"],function($,a,b,c,d,e){
+define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_memberListTemplate","view_memberItemTemplate","view_inviteTemplate"],function($,a,b,c,d,e,f){
 	var view = {
 			/**
 			 * 멤버 리스트 표시
@@ -305,8 +356,12 @@ define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_
 				d.initialize();
 				e.initialize();
 			},
+			/**
+			 * 썸네일 이미지 
+			 * 공통으로 겹치는 부분이므로 협의해야함
+			 */
 			displayThumbnail : function(){
-				
+				console.log("thumbnail");
 			},
 			/**
 			 * 메시지 표시
@@ -318,7 +373,7 @@ define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_
 			 * 대화상대 초대 표시
 			 */
 			displayInvite : function(){
-				
+				f.initialize();
 			},
 			/**
 			 * 대화 싱크
@@ -342,7 +397,7 @@ define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_
 	return view;
 });
 /**
- * data model 모듈
+ * data model 모듈 - backbone 쓰면
  */
 define("model",[],function(){
 	var model = {
