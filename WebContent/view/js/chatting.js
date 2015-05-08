@@ -18,13 +18,19 @@ define("api",["jquery"],function($){
 			 * 
 			 */
 			getGroup : function(){
-				
+				var data = [
+				            {}
+				            ];
+				return data;
 			},
 			/**
 			 * 
 			 */
 			getMember : function(){
-				
+				var data = [
+				            {"thumbnail":"../../design/html_noinc/images/member/member_view_sample_img.jpg","name":"유재석","dept":"기술연구소","birth":"8월 14일","phone":"010-1234-5678"}
+				            ];
+				return data;
 			},
 			/**
 			 * 
@@ -40,13 +46,19 @@ define("api",["jquery"],function($){
 			 * 
 			 */
 			getSession : function(){
-				
+				var data = [
+				            {}
+				            ];
+				return data;
 			},
 			/**
 			 * 
 			 */
 			getSync : function(){
-				
+				var data = [
+				            {}
+				            ];
+				return data;
 			},
 			/**
 			 * 
@@ -294,14 +306,12 @@ define("view_memberListTemplate",["jquery","api","text!templates/memberListTempl
  * 대화상대초대 컨테이너 템플릿
  */
 define("text!templates/inviteTemplate.html",[],function(){
-    return '      <div class="header_chating">\n        <h1 class="name_chating">대화 상대 선택</h1>\n\t\t<div class="pop_form">\n           <div class="band_select _custom_selector_wrap">\n            <a href="#" class="selected_name _custom_selector_selected">&nbsp;</a>\n            <ul class="band_list _custom_selector_list_wrap" style="display:none">\n            </ul>\n          </div>\n          <div class="member_search">\n          \t<input type="text" id="search_input" name="search_input" placeholder="멤버검색" class="search_input">\n            <button class="search_x"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/input_x.gif" alt="" width="17" height="17" /></button>\n            <button type="submit" class="search_submit"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/search_submit.png" alt="" width="18" height="18" /></button>\n          </div>\n        </div>\n      </div>\n      <div class="chat_layer_main">\n        <form method="post" action="#">\n          <div class="member_main">\n          \t<div class="_member_list_wrap">\n          \t</div>\n            \n\t\t\t\n          </div>\n\t\t  <div class="_selected_member_wrap">\n\t\t  </div>\n          <div class="confirm_box">\n            <button type="button" class="btn_cancel"><span>취소</span></button>\n            <button type="sutmit" class="btn_confirm"><span>초대</span></button>\n          </div>\n        </form>\n        <div class="dim"></div>\n      </div>';
+    return '<div class="chat_pop member_search"><div class="header_chating">\n <h1 class="name_chating">대화 상대 선택</h1>\n\t\t<div class="pop_form">\n <div class="band_select _custom_selector_wrap">\n  <a href="#" class="selected_name _custom_selector_selected">&nbsp;</a>\n   <ul class="band_list _custom_selector_list_wrap" style="display:none">\n  </ul>\n  </div>\n  <div class="member_search">\n  \t<input type="text" id="search_input" name="search_input" placeholder="멤버검색" class="search_input">\n  <button class="search_x"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/input_x.gif" alt="" width="17" height="17" /></button>\n  <button type="submit" class="search_submit"><img src="http://s.cmstatic.net/pcweb/res/153600/images/chat/search_submit.png" alt="" width="18" height="18" /></button>\n </div>\n </div>\n  </div>\n <div class="chat_layer_main">\n  <form method="post" action="#">\n <div class="member_main">\n  \t<div class="_member_list_wrap">\n<ul class="member_list">\t</ul> \t</div>\n \n\t\t\t\n  </div>\n\t\t  <div class="_selected_member_wrap">\n\t\t  </div>\n <div class="confirm_box">\n <button type="button" class="btn_cancel"><span>취소</span></button>\n <button type="sutmit" class="btn_confirm"><span>초대</span></button>\n </div>\n </form>\n  <div class="dim"></div>\n  </div></div>';
 });
 define("view_inviteTemplate",["jquery","util","api","text!templates/inviteTemplate.html"],function($,u,a,t){
 	var view = {
 			initialize : function(){
-				var el = $(""),
-					data = {};
-				u.template(el,t,data);
+				$("._contents_body").html(t);
 				this.event();
 			},
 			event : function(){
@@ -314,12 +324,15 @@ define("view_inviteTemplate",["jquery","util","api","text!templates/inviteTempla
  * 대화상대 초대 멤버 템플릿
  */
 define("text!templates/invitableMemberTemplate.html",[],function(){
-    return '<script type="x-jquery-tmpl"><img src="${thumbnail}" class="profile" alt="" width="44" height="44">\n<span class="member_name">${name}</span>\n<span class="check_wrap">\n\t<input type="checkbox" id="check_member_${cid}" name="check_member_${cid}" value="">\n\t<label class="check_member" for="check_member_${cid}">\n\t\t<span class="checkbox_fake"></span>1:1\n\t</label>\n</span></script>';
+    return '<script type="x-jquery-tmpl"><li><img src="${thumbnail}" class="profile" alt="" width="44" height="44">\n<span class="member_name">${name}</span>\n<span class="check_wrap">\n\t<input type="checkbox" id="check_member_${cid}" name="check_member_${cid}" value="">\n\t<label class="check_member" for="check_member_${cid}">\n\t\t<span class="checkbox_fake"></span>1:1\n\t</label>\n</span></li></script>';
 });
 define("view_invitableMemberTemplate",["jquery","util","api","text!templates/invitableMemberTemplate.html",],function($,u,a,t){
 	var view = {
 			initialize :  function(){
-				
+				var el = $("ul.member_list"),
+					data = a.getMember();
+				u.template(el,t,data);
+				this.event();
 			},
 			event : function(){
 				
@@ -331,15 +344,21 @@ define("view_invitableMemberTemplate",["jquery","util","api","text!templates/inv
  * 썸네일 템플릿
  */
 define("text!templates/thumbnailTemplate.html",[],function(){
-	return '<script type="text/x-jquery-tmpl"><div><div class="dim"></div><div class="dimmed"><div class="member_profile"><form><div class="profile_img"><img src="../../images/member/member_view_sample_img.jpg" alt=""></div><div class="profile_info"><div class="profile_name"><p>유재석</p></div><div class="profile_detail_info"><p class="profile_detail_group">기술연구소</p><p class="profile_detail_state">8월 14일, 010-2345-6789</p></div></div><div class="member-profile-close"><img src="../../images/member/member_profile_close.gif" alt=""></div></form></div></div></div></div></script>';
+	return '<script type="text/x-jquery-tmpl"><div><div class="dim"></div><div class="dimmed"><div class="member_profile"><form><div class="profile_img"><img src="${thumbnail}" alt=""></div><div class="profile_info"><div class="profile_name"><p>${name}</p></div><div class="profile_detail_info"><p class="profile_detail_group">${dept}</p><p class="profile_detail_state">${birth}, ${phone}</p></div></div><div class="member-profile-close"><img src="../css/images/member/member_profile_close.gif" alt=""></div></form></div></div></div></div></script>';
 });
 define("view_thumbnailTemplate",["jquery","util","api","text!templates/thumbnailTemplate.html"],function($,u,a,t){
 	var view = {
 			initialize : function(){
+				var el = $("body"),
+					data = a.getMember();
 				
+				u.template(el,t,data);
+				this.event();
 			},
 			event : function(){
-				
+				$("div.member-profile-close").on("click",function(e){
+					console.log("썸네일 닫기");
+				});
 			}
 	}
 	return view;
@@ -347,7 +366,7 @@ define("view_thumbnailTemplate",["jquery","util","api","text!templates/thumbnail
 /**
  * view 모듈
  */
-define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_memberListTemplate","view_memberItemTemplate","view_inviteTemplate"],function($,a,b,c,d,e,f){
+define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_memberListTemplate","view_memberItemTemplate","view_inviteTemplate","view_invitableMemberTemplate","view_thumbnailTemplate"],function($,a,b,c,d,e,f,g,h){
 	var view = {
 			/**
 			 * 멤버 리스트 표시
@@ -361,7 +380,7 @@ define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_
 			 * 공통으로 겹치는 부분이므로 협의해야함
 			 */
 			displayThumbnail : function(){
-				console.log("thumbnail");
+				h.initialize();
 			},
 			/**
 			 * 메시지 표시
@@ -374,6 +393,7 @@ define("view",["jquery","api","view_messageTemplate","view_eventTemplate","view_
 			 */
 			displayInvite : function(){
 				f.initialize();
+				g.initialize();
 			},
 			/**
 			 * 대화 싱크
